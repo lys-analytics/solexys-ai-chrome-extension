@@ -1,0 +1,51 @@
+/* Reset styles for our extension to avoid conflicts with the host site */
+.solexys-ai-extension,
+.solexys-ai-extension * {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  box-sizing: border-box;
+}
+
+/* Extension root container - positioned in Z space above host site */
+#solexys-ai-extension-root {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2147483647; /* Maximum z-index */
+  pointer-events: none;
+  overflow: visible;
+}
+
+/* Allow pointer events on our extension components */
+.solexys-ai-extension {
+  pointer-events: auto;
+}
+
+/* Animations for bubble appearance */
+@keyframes pop-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Apply animation to bubbles */
+.solexys-ai-extension button {
+  animation: pop-in 0.3s ease-out;
+}
+
+/* Add transition effects */
+.solexys-ai-extension .transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+} 

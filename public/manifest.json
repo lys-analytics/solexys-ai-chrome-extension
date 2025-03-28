@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "Solexys AI Assistant",
+  "version": "1.0.0",
+  "description": "AI-powered assistant for pump.fun and raydium.io",
+  "icons": {
+    "16": "hero_small.png",
+    "48": "hero_small.png",
+    "128": "hero_small.png"
+  },
+  "action": {
+    "default_icon": {
+      "16": "hero_small.png",
+      "48": "hero_small.png",
+      "128": "hero_small.png"
+    },
+    "default_title": "Solexys AI Assistant"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.pump.fun/*",
+        "https://*.raydium.io/*"
+      ],
+      "js": ["./static/js/content.js"],
+      "css": ["./static/css/content.css"]
+    }
+  ],
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "https://app.solexys.ai/*"
+  ]
+}
