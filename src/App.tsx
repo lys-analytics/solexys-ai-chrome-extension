@@ -5,8 +5,8 @@ import ReactDOM from 'react-dom/client';
 // Create a separate React component for the banner using Tailwind CSS
 const HolderDistributionBanner: React.FC = () => {
   return (
-    <div className="w-full h-[60px] bg-red-600 z-[9999] relative flex items-center justify-center transition-opacity duration-300 ease-in-out">
-      <p className="m-0 text-white font-bold">
+    <div className="solexys-w-full solexys-h-[60px] solexys-bg-red-600 solexys-z-[9999] solexys-relative solexys-flex solexys-items-center solexys-justify-center solexys-transition-opacity solexys-duration-300 solexys-ease-in-out">
+      <p className="solexys-m-0 solexys-text-white solexys-font-bold">
         Detected HolderDistribution or Coin Page
       </p>
     </div>

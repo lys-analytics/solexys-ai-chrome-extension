@@ -39,12 +39,10 @@ module.exports = {
       return webpackConfig;
     },
   },
+  // Use PostCSS config from postcss.config.js
   style: {
     postcss: {
-      plugins: [
-        tailwindcss('./tailwind.config.ts'),
-        autoprefixer,
-      ],
+      mode: 'file', // Use postcss.config.js file
     },
   },
   devServer: {

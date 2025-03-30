@@ -1,6 +1,7 @@
 import type { Config } from 'tailwindcss';
 
 const config: Config = {
+  prefix: 'solexys-',
   content: [
     './src/**/*.{js,jsx,ts,tsx}',
     './public/index.html'

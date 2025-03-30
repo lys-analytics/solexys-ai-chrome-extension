@@ -4,7 +4,7 @@ import StatisticsBubble from './StatisticsBubble';
 
 // Logo bubble at the top
 const LogoBubble: React.FC = () => (
-  <div className="bubble-button cursor-default" style={{ width: '2.5rem', height: '2.5rem' }}>
+  <div className="bubble-button solexys-cursor-default" style={{ width: '2.5rem', height: '2.5rem' }}>
     <div className="bubble-logo" style={{ width: '2rem', height: '2rem' }}>
       <img src={chrome.runtime.getURL('hero_small.png')} alt="Solexys AI" />
     </div>
@@ -18,7 +18,7 @@ const MainBubble: React.FC<{
 }> = ({ onClick, isActive }) => (
   <button
     onClick={onClick}
-    className={`bubble-button ${isActive ? 'rotate-45' : ''}`}
+    className={`bubble-button ${isActive ? 'solexys-rotate-45' : ''}`}
     style={{ width: '2.5rem', height: '2.5rem' }}
   >
     <svg
@@ -54,7 +54,7 @@ const StatsBubble: React.FC<{
 }> = ({ onClick, isActive }) => (
   <button
     onClick={onClick}
-    className={`bubble-button ${isActive ? 'rotate-45' : ''}`}
+    className={`bubble-button ${isActive ? 'solexys-rotate-45' : ''}`}
     style={{ width: '2.5rem', height: '2.5rem' }}
   >
     <svg
@@ -101,8 +101,8 @@ const InteractiveBubbles: React.FC = () => {
   };
 
   return (
-    <div className="fixed !left-[10px] bottom-[20px] z-50" style={{ left: '10px' }}>
-      <div className="flex flex-col-reverse items-center gap-3">
+    <div className="solexys-fixed !solexys-left-[10px] solexys-bottom-[20px] solexys-z-50" style={{ left: '10px' }}>
+      <div className="solexys-flex solexys-flex-col-reverse solexys-items-center solexys-gap-3">
         <MainBubble onClick={toggleChat} isActive={isChatOpen} />
         <StatsBubble onClick={toggleStats} isActive={isStatsOpen} />
         <LogoBubble />

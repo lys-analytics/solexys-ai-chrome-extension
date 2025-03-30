@@ -23,10 +23,10 @@ const StatisticsBubble: React.FC<{
   let content;
   if (isLoading) {
     content = (
-      <div className="flex justify-center items-center h-full py-10">
-        <svg className="animate-spin h-8 w-8 text-[#E32D13]" viewBox="0 0 24 24">
+      <div className="solexys-flex solexys-justify-center solexys-items-center solexys-h-full solexys-py-10">
+        <svg className="solexys-animate-spin solexys-h-8 solexys-w-8 solexys-text-[#E32D13]" viewBox="0 0 24 24">
           <circle 
-            className="opacity-25" 
+            className="solexys-opacity-25" 
             cx="12" 
             cy="12" 
             r="10" 
@@ -35,7 +35,7 @@ const StatisticsBubble: React.FC<{
             fill="none"
           />
           <path 
-            className="opacity-75" 
+            className="solexys-opacity-75" 
             fill="currentColor" 
             d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
           />
@@ -44,42 +44,42 @@ const StatisticsBubble: React.FC<{
     );
   } else if (error) {
     content = (
-      <div className="text-red-400 text-center p-3">
+      <div className="solexys-text-red-400 solexys-text-center solexys-p-3">
         Failed to load statistics
       </div>
     );
   } else if (statistics) {
     content = (
-      <div className="p-5">
-        <div className="grid grid-cols-2 gap-6">
-          <div className="text-center bg-[#292a3a] rounded-lg p-4">
-            <div className="text-sm text-gray-300 mb-1">Total Users</div>
-            <div className="font-bold text-xl text-white">{formatNumber(statistics.totalUsers)}</div>
+      <div className="solexys-p-5">
+        <div className="solexys-grid solexys-grid-cols-2 solexys-gap-6">
+          <div className="solexys-text-center solexys-bg-[#292a3a] solexys-rounded-lg solexys-p-4">
+            <div className="solexys-text-sm solexys-text-gray-300 solexys-mb-1">Total Users</div>
+            <div className="solexys-font-bold solexys-text-xl solexys-text-white">{formatNumber(statistics.totalUsers)}</div>
           </div>
-          <div className="text-center bg-[#292a3a] rounded-lg p-4">
-            <div className="text-sm text-gray-300 mb-1">Active Now</div>
-            <div className="font-bold text-xl text-white">{formatNumber(statistics.activeNow)}</div>
+          <div className="solexys-text-center solexys-bg-[#292a3a] solexys-rounded-lg solexys-p-4">
+            <div className="solexys-text-sm solexys-text-gray-300 solexys-mb-1">Active Now</div>
+            <div className="solexys-font-bold solexys-text-xl solexys-text-white">{formatNumber(statistics.activeNow)}</div>
           </div>
-          <div className="text-center bg-[#292a3a] rounded-lg p-4 col-span-2">
-            <div className="text-sm text-gray-300 mb-1">Success Rate</div>
-            <div className="font-bold text-xl text-green-400">{formatPercentage(statistics.successRate)}</div>
+          <div className="solexys-text-center solexys-bg-[#292a3a] solexys-rounded-lg solexys-p-4 solexys-col-span-2">
+            <div className="solexys-text-sm solexys-text-gray-300 solexys-mb-1">Success Rate</div>
+            <div className="solexys-font-bold solexys-text-xl solexys-text-green-400">{formatPercentage(statistics.successRate)}</div>
           </div>
         </div>
-        <div className="text-xs text-gray-400 text-center mt-4">
+        <div className="solexys-text-xs solexys-text-gray-400 solexys-text-center solexys-mt-4">
           Last updated: {new Date(statistics.updatedAt).toLocaleTimeString()}
         </div>
       </div>
     );
   } else {
     content = (
-      <div className="text-center text-gray-400 p-3">
+      <div className="solexys-text-center solexys-text-gray-400 solexys-p-3">
         No statistics available
       </div>
     );
   }
   
   return (
-    <div className="chat-bubble absolute"
+    <div className="chat-bubble solexys-absolute"
       style={{
         left: '4rem',
         bottom: '0',
@@ -95,11 +95,11 @@ const StatisticsBubble: React.FC<{
           alt="Anime Girl" 
           className="header-image"
         />
-        <div className="chat-title flex justify-between items-center">
-          <h3 className="font-semibold">Solexys AI Stats</h3>
+        <div className="chat-title solexys-flex solexys-justify-between solexys-items-center">
+          <h3 className="solexys-font-semibold">Solexys AI Stats</h3>
           <button 
             onClick={onClose} 
-            className="text-white hover:text-gray-200 focus:outline-none"
+            className="solexys-text-white solexys-hover:text-gray-200 solexys-focus:outline-none"
           >
             <svg style={{width: '20px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
@@ -109,7 +109,7 @@ const StatisticsBubble: React.FC<{
       </div>
       
       {/* Content */}
-      <div className="chat-body p-4">
+      <div className="chat-body solexys-p-4">
         {content}
       </div>
     </div>
