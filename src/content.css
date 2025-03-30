@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* Reset styles for our extension to avoid conflicts with the host site */
 .solexys-ai-extension,
 .solexys-ai-extension * {
@@ -21,6 +25,224 @@
 /* Allow pointer events on our extension components */
 .solexys-ai-extension {
   pointer-events: auto;
+}
+
+/* Dark mode theme colors */
+:root {
+  --dark-bg: #1e1e2e;
+  --dark-surface: #292a3a;
+  --dark-border: #3f3f5c;
+  --dark-text: #e9e9f2;
+  --dark-text-secondary: #a7a7c5;
+  --primary-color: #E32D13;
+  --primary-dark: #C02510;
+  --bubble-size: 2.5rem;
+  --icon-size: 1.25rem;
+}
+
+/* Explicit styling for components - these will work regardless of Tailwind */
+.solexys-ai-extension .fixed {
+  position: fixed;
+}
+
+.solexys-ai-extension .absolute {
+  position: absolute;
+}
+
+.solexys-ai-extension .relative {
+  position: relative;
+}
+
+.solexys-ai-extension .flex {
+  display: flex;
+}
+
+.solexys-ai-extension .flex-col-reverse {
+  flex-direction: column-reverse;
+}
+
+.solexys-ai-extension .items-center {
+  align-items: center;
+}
+
+.solexys-ai-extension .justify-between {
+  justify-content: space-between;
+}
+
+.solexys-ai-extension .z-50 {
+  z-index: 50;
+}
+
+.solexys-ai-extension .left-4 {
+  left: 1rem;
+}
+
+.solexys-ai-extension .left-16 {
+  left: 4rem;
+}
+
+.solexys-ai-extension .bottom-4 {
+  bottom: 1rem;
+}
+
+.solexys-ai-extension .space-y-3 > * + * {
+  margin-top: 1rem;
+}
+
+.solexys-ai-extension .space-y-reverse {
+  --space-y-reverse: 1;
+}
+
+.solexys-ai-extension .bg-primary,
+.solexys-ai-extension [class*="bg-[#E32D13]"] {
+  background-color: #E32D13;
+}
+
+.solexys-ai-extension .text-white {
+  color: white;
+}
+
+.solexys-ai-extension .rounded-full {
+  border-radius: 9999px;
+}
+
+.solexys-ai-extension .rounded-lg {
+  border-radius: 0.5rem;
+}
+
+.solexys-ai-extension .p-2, 
+.solexys-ai-extension .px-2, 
+.solexys-ai-extension .py-2 {
+  padding: 0.5rem;
+}
+
+.solexys-ai-extension .p-3, 
+.solexys-ai-extension .px-3, 
+.solexys-ai-extension .py-3 {
+  padding: 0.75rem;
+}
+
+.solexys-ai-extension .p-4, 
+.solexys-ai-extension .px-4, 
+.solexys-ai-extension .py-4 {
+  padding: 1rem;
+}
+
+.solexys-ai-extension .shadow-xl {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Dark mode chat bubble styling */
+.solexys-ai-extension .chat-bubble {
+  background-color: var(--dark-bg);
+  border: 1px solid var(--dark-border);
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.solexys-ai-extension .chat-header {
+  position: relative;
+  border-bottom: 1px solid var(--dark-border);
+  height: 120px;
+  overflow: hidden;
+}
+
+.solexys-ai-extension .header-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.solexys-ai-extension .chat-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: linear-gradient(to top, rgba(30, 30, 46, 0.9), rgba(30, 30, 46, 0));
+  color: var(--dark-text);
+  font-weight: 600;
+}
+
+.solexys-ai-extension .chat-body {
+  background-color: var(--dark-bg);
+  color: var(--dark-text);
+  height: 300px;
+  overflow-y: auto;
+}
+
+.solexys-ai-extension .chat-footer {
+  background-color: var(--dark-surface);
+  border-top: 1px solid var(--dark-border);
+}
+
+.solexys-ai-extension .user-message {
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 1rem 1rem 0.25rem 1rem;
+}
+
+.solexys-ai-extension .assistant-message {
+  background-color: var(--dark-surface);
+  color: var(--dark-text);
+  border-radius: 1rem 1rem 1rem 0.25rem;
+}
+
+.solexys-ai-extension .input-field {
+  background-color: var(--dark-surface);
+  border: 1px solid var(--dark-border);
+  color: var(--dark-text);
+  border-radius: 1.5rem 0 0 1.5rem;
+}
+
+.solexys-ai-extension .input-field::placeholder {
+  color: var(--dark-text-secondary);
+}
+
+.solexys-ai-extension .send-button {
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 0 1.5rem 1.5rem 0;
+  transition: background-color 0.2s;
+}
+
+.solexys-ai-extension .send-button:hover {
+  background-color: var(--primary-dark);
+}
+
+.solexys-ai-extension .bubble-button {
+  width: var(--bubble-size);
+  height: var(--bubble-size);
+  border-radius: 50%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: var(--primary-color);
+  color: white;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.solexys-ai-extension .bubble-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.solexys-ai-extension .bubble-logo {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  overflow: hidden;
+}
+
+.solexys-ai-extension .bubble-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* Animations for bubble appearance */

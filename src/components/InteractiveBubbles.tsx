@@ -2,21 +2,27 @@ import React, { useState } from 'react';
 import ChatBubble from './ChatBubble';
 import StatisticsBubble from './StatisticsBubble';
 
-// Main bubble that appears on the bottom-left
+// Logo bubble at the top
+const LogoBubble: React.FC = () => (
+  <div className="bubble-button" style={{ width: '2.5rem', height: '2.5rem' }}>
+    <div className="bubble-logo" style={{ width: '2rem', height: '2rem' }}>
+      <img src={chrome.runtime.getURL('hero_small.png')} alt="Solexys AI" />
+    </div>
+  </div>
+);
+
+// Main chat bubble
 const MainBubble: React.FC<{
   onClick: () => void;
   isActive: boolean;
 }> = ({ onClick, isActive }) => (
   <button
     onClick={onClick}
-    className={`flex items-center justify-center w-12 h-12 rounded-full shadow-lg transition-all duration-300 ease-in-out transform hover:scale-110 hover:shadow-xl ${
-      isActive ? 'bg-primary rotate-45' : 'bg-primary'
-    }`}
+    className={`bubble-button ${isActive ? 'rotate-45' : ''}`}
+    style={{ width: '2.5rem', height: '2.5rem' }}
   >
     <svg
-      className={`h-6 w-6 text-white transition-transform duration-300 ${
-        isActive ? 'rotate-45' : ''
-      }`}
+      style={{width: '20px'}}
       fill="none"
       stroke="currentColor"
       viewBox="0 0 24 24"
@@ -41,35 +47,43 @@ const MainBubble: React.FC<{
   </button>
 );
 
-// Stats bubble that appears above the main bubble
+// Stats bubble
 const StatsBubble: React.FC<{
   onClick: () => void;
   isActive: boolean;
 }> = ({ onClick, isActive }) => (
   <button
     onClick={onClick}
-    className={`flex items-center justify-center w-10 h-10 rounded-full shadow-lg transition-all duration-300 ease-in-out transform hover:scale-110 hover:shadow-xl ${
-      isActive ? 'bg-primary/90' : 'bg-gradient-to-r from-primary/80 to-primary'
-    }`}
+    className={`bubble-button ${isActive ? 'rotate-45' : ''}`}
+    style={{ width: '2.5rem', height: '2.5rem' }}
   >
     <svg
-      className="h-5 w-5 text-white"
+      style={{width: '20px'}}
       fill="none"
       stroke="currentColor"
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-      />
+      {isActive ? (
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M6 18L18 6M6 6l12 12"
+        />
+      ) : (
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+        />
+      )}
     </svg>
   </button>
 );
 
-// Main component that renders both bubbles and their popups
+// Main component that renders bubbles and their popups
 const InteractiveBubbles: React.FC = () => {
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [isStatsOpen, setIsStatsOpen] = useState(false);
@@ -88,12 +102,15 @@ const InteractiveBubbles: React.FC = () => {
 
   return (
     <div className="fixed left-4 bottom-4 z-50">
-      <div className="flex flex-col-reverse items-center space-y-reverse space-y-3">
-        {/* Main Bubble */}
+      <div className="flex flex-col-reverse items-center space-y-reverse space-y-5">
+        {/* Main Chat Bubble */}
         <MainBubble onClick={toggleChat} isActive={isChatOpen} />
         
-        {/* Stats Bubble (positioned above) */}
+        {/* Stats Bubble */}
         <StatsBubble onClick={toggleStats} isActive={isStatsOpen} />
+        
+        {/* Logo Bubble */}
+        <LogoBubble />
       </div>
 
       {/* Chat Bubble Dialog */}

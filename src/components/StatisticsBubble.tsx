@@ -23,8 +23,8 @@ const StatisticsBubble: React.FC<{
   let content;
   if (isLoading) {
     content = (
-      <div className="flex justify-center items-center h-full">
-        <svg className="animate-spin h-8 w-8 text-blue-500" viewBox="0 0 24 24">
+      <div className="flex justify-center items-center h-full py-10">
+        <svg className="animate-spin h-8 w-8 text-[#E32D13]" viewBox="0 0 24 24">
           <circle 
             className="opacity-25" 
             cx="12" 
@@ -44,57 +44,74 @@ const StatisticsBubble: React.FC<{
     );
   } else if (error) {
     content = (
-      <div className="text-red-500 text-center p-3">
+      <div className="text-red-400 text-center p-3">
         Failed to load statistics
       </div>
     );
   } else if (statistics) {
     content = (
-      <div className="p-4">
-        <div className="grid grid-cols-2 gap-4">
-          <div className="text-center">
-            <div className="text-sm text-gray-500">Total Users</div>
-            <div className="font-bold text-lg">{formatNumber(statistics.totalUsers)}</div>
+      <div className="p-5">
+        <div className="grid grid-cols-2 gap-6">
+          <div className="text-center bg-[#292a3a] rounded-lg p-4">
+            <div className="text-sm text-gray-300 mb-1">Total Users</div>
+            <div className="font-bold text-xl text-white">{formatNumber(statistics.totalUsers)}</div>
           </div>
-          <div className="text-center">
-            <div className="text-sm text-gray-500">Active Now</div>
-            <div className="font-bold text-lg">{formatNumber(statistics.activeNow)}</div>
+          <div className="text-center bg-[#292a3a] rounded-lg p-4">
+            <div className="text-sm text-gray-300 mb-1">Active Now</div>
+            <div className="font-bold text-xl text-white">{formatNumber(statistics.activeNow)}</div>
           </div>
-          <div className="text-center col-span-2">
-            <div className="text-sm text-gray-500">Success Rate</div>
-            <div className="font-bold text-lg text-green-600">{formatPercentage(statistics.successRate)}</div>
+          <div className="text-center bg-[#292a3a] rounded-lg p-4 col-span-2">
+            <div className="text-sm text-gray-300 mb-1">Success Rate</div>
+            <div className="font-bold text-xl text-green-400">{formatPercentage(statistics.successRate)}</div>
           </div>
         </div>
-        <div className="text-xs text-gray-400 text-center mt-2">
+        <div className="text-xs text-gray-400 text-center mt-4">
           Last updated: {new Date(statistics.updatedAt).toLocaleTimeString()}
         </div>
       </div>
     );
   } else {
     content = (
-      <div className="text-center text-gray-500 p-3">
+      <div className="text-center text-gray-400 p-3">
         No statistics available
       </div>
     );
   }
   
   return (
-    <div className="absolute left-16 bottom-0 mb-4 w-72 bg-white rounded-lg shadow-xl border border-gray-300 overflow-hidden z-50 transform -translate-y-4">
-      {/* Header */}
-      <div className="bg-primary text-white px-4 py-3 flex justify-between items-center">
-        <h3 className="font-semibold">Solexys AI Stats</h3>
-        <button 
-          onClick={onClose} 
-          className="text-white hover:text-gray-200 focus:outline-none"
-        >
-          <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
+    <div className="chat-bubble absolute"
+      style={{
+        left: '4rem',
+        bottom: '0',
+        marginBottom: '1rem',
+        width: '22rem',
+        transform: 'translateY(-1rem)'
+      }}
+    >
+      {/* Header with anime girl */}
+      <div className="chat-header">
+        <img 
+          src={chrome.runtime.getURL('transparent_header.png')} 
+          alt="Anime Girl" 
+          className="header-image"
+        />
+        <div className="chat-title flex justify-between items-center">
+          <h3 className="font-semibold">Solexys AI Stats</h3>
+          <button 
+            onClick={onClose} 
+            className="text-white hover:text-gray-200 focus:outline-none"
+          >
+            <svg style={{width: '20px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
       </div>
       
       {/* Content */}
-      {content}
+      <div className="chat-body p-4">
+        {content}
+      </div>
     </div>
   );
 };

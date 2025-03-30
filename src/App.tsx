@@ -17,7 +17,7 @@ function App() {
   }
   
   return (
-    <div className="solexys-ai-extension">
+    <div className="solexys-ai-extension" data-extension-root="true">
       <InteractiveBubbles />
     </div>
   );

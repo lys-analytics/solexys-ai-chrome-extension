@@ -31,5 +31,11 @@
   ],
   "host_permissions": [
     "https://app.solexys.ai/*"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["hero_small.png", "transparent_header.png"],
+      "matches": ["https://*.pump.fun/*", "https://*.raydium.io/*"]
+    }
   ]
 }

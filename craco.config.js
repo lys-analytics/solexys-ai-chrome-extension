@@ -1,4 +1,6 @@
 const path = require('path');
+const tailwindcss = require('tailwindcss');
+const autoprefixer = require('autoprefixer');
 
 module.exports = {
   webpack: {
@@ -39,9 +41,10 @@ module.exports = {
   },
   style: {
     postcss: {
-      loaderOptions: {
-        implementation: require('postcss'),
-      },
+      plugins: [
+        tailwindcss('./tailwind.config.ts'),
+        autoprefixer,
+      ],
     },
   },
   devServer: {
