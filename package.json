@@ -24,6 +24,7 @@
   "scripts": {
     "start": "craco start",
     "build": "craco build",
+    "build:watch": "nodemon --watch src --watch public --watch craco.config.js --ext js,jsx,ts,tsx,css,scss,json,html,svg,png,jpg,jpeg --exec \"npm run build\"",
     "test": "craco test",
     "eject": "react-scripts eject"
   },
@@ -47,6 +48,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.16",
+    "nodemon": "^3.1.9",
     "postcss": "^8.4.31",
     "tailwindcss": "^3.3.5"
   }

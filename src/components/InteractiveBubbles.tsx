@@ -4,7 +4,7 @@ import StatisticsBubble from './StatisticsBubble';
 
 // Logo bubble at the top
 const LogoBubble: React.FC = () => (
-  <div className="bubble-button" style={{ width: '2.5rem', height: '2.5rem' }}>
+  <div className="bubble-button cursor-default" style={{ width: '2.5rem', height: '2.5rem' }}>
     <div className="bubble-logo" style={{ width: '2rem', height: '2rem' }}>
       <img src={chrome.runtime.getURL('hero_small.png')} alt="Solexys AI" />
     </div>
@@ -101,22 +101,15 @@ const InteractiveBubbles: React.FC = () => {
   };
 
   return (
-    <div className="fixed left-4 bottom-4 z-50">
-      <div className="flex flex-col-reverse items-center space-y-reverse space-y-5">
-        {/* Main Chat Bubble */}
+    <div className="fixed !left-[10px] bottom-[20px] z-50" style={{ left: '10px' }}>
+      <div className="flex flex-col-reverse items-center gap-3">
         <MainBubble onClick={toggleChat} isActive={isChatOpen} />
-        
-        {/* Stats Bubble */}
         <StatsBubble onClick={toggleStats} isActive={isStatsOpen} />
-        
-        {/* Logo Bubble */}
         <LogoBubble />
       </div>
 
-      {/* Chat Bubble Dialog */}
       <ChatBubble isOpen={isChatOpen} onClose={() => setIsChatOpen(false)} />
       
-      {/* Statistics Bubble Dialog */}
       <StatisticsBubble isOpen={isStatsOpen} onClose={() => setIsStatsOpen(false)} />
     </div>
   );
