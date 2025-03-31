@@ -79,7 +79,8 @@ const StatisticsBubble: React.FC<{
   }
   
   return (
-    <div className="chat-bubble solexys-absolute"
+    <div 
+      className="solexys-absolute solexys-bg-[#1e1e2e] solexys-border solexys-border-[#3f3f5c] solexys-rounded-2xl solexys-overflow-hidden solexys-shadow-xl"
       style={{
         left: '4rem',
         bottom: '0',
@@ -89,19 +90,19 @@ const StatisticsBubble: React.FC<{
       }}
     >
       {/* Header with anime girl */}
-      <div className="chat-header">
+      <div className="solexys-relative solexys-border-b solexys-border-[#3f3f5c] solexys-h-[120px] solexys-overflow-hidden">
         <img 
           src={chrome.runtime.getURL('transparent_header.png')} 
           alt="Anime Girl" 
-          className="header-image"
+          className="solexys-w-full solexys-h-full solexys-object-cover solexys-object-center"
         />
-        <div className="chat-title solexys-flex solexys-justify-between solexys-items-center">
+        <div className="solexys-absolute solexys-bottom-0 solexys-left-0 solexys-w-full solexys-py-3 solexys-px-4 solexys-bg-gradient-to-t solexys-from-[#1e1e2ee6] solexys-to-transparent solexys-text-[#e9e9f2] solexys-font-semibold solexys-flex solexys-justify-between solexys-items-center">
           <h3 className="solexys-font-semibold">Solexys AI Stats</h3>
           <button 
             onClick={onClose} 
-            className="solexys-text-white solexys-hover:text-gray-200 solexys-focus:outline-none"
+            className="solexys-text-white hover:solexys-text-gray-200 focus:solexys-outline-none"
           >
-            <svg style={{width: '20px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="solexys-w-5 solexys-h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
@@ -109,7 +110,7 @@ const StatisticsBubble: React.FC<{
       </div>
       
       {/* Content */}
-      <div className="chat-body solexys-p-4">
+      <div className="solexys-bg-[#1e1e2e] solexys-text-[#e9e9f2] solexys-h-[300px] solexys-overflow-y-auto solexys-p-4">
         {content}
       </div>
     </div>

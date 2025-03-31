@@ -13,6 +13,17 @@ if (isSupportedSite) {
   // Create container for our app
   const container = document.createElement('div');
   container.id = 'solexys-ai-extension-root';
+  // Apply styles directly using classList
+  container.classList.add(
+    'solexys-absolute',
+    'solexys-left-0',
+    'solexys-bottom-0',
+    'solexys-w-full',
+    'solexys-h-full',
+    'solexys-z-[2147483647]',
+    'solexys-pointer-events-none',
+    'solexys-overflow-visible'
+  );
   document.body.appendChild(container);
 
   // Initialize React Query

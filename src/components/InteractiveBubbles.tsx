@@ -4,9 +4,13 @@ import StatisticsBubble from './StatisticsBubble';
 
 // Logo bubble at the top
 const LogoBubble: React.FC = () => (
-  <div className="bubble-button solexys-cursor-default" style={{ width: '2.5rem', height: '2.5rem' }}>
-    <div className="bubble-logo" style={{ width: '2rem', height: '2rem' }}>
-      <img src={chrome.runtime.getURL('hero_small.png')} alt="Solexys AI" />
+  <div className="solexys-flex solexys-items-center solexys-justify-center solexys-w-10 solexys-h-10 solexys-rounded-full solexys-bg-[#E32D13] solexys-shadow-md solexys-cursor-default">
+    <div className="solexys-w-8 solexys-h-8 solexys-rounded-full solexys-bg-[#E32D13] solexys-overflow-hidden">
+      <img 
+        src={chrome.runtime.getURL('hero_small.png')} 
+        alt="Solexys AI" 
+        className="solexys-w-full solexys-h-full solexys-object-cover"
+      />
     </div>
   </div>
 );
@@ -18,11 +22,10 @@ const MainBubble: React.FC<{
 }> = ({ onClick, isActive }) => (
   <button
     onClick={onClick}
-    className={`bubble-button ${isActive ? 'solexys-rotate-45' : ''}`}
-    style={{ width: '2.5rem', height: '2.5rem' }}
+    className={`solexys-w-10 solexys-h-10 solexys-rounded-full solexys-bg-[#E32D13] solexys-text-white solexys-flex solexys-items-center solexys-justify-center solexys-shadow-md solexys-cursor-pointer solexys-transition-transform solexys-duration-300 hover:solexys-scale-110 hover:solexys-shadow-lg ${isActive ? 'solexys-rotate-45' : ''}`}
   >
     <svg
-      style={{width: '20px'}}
+      className="solexys-w-5 solexys-h-5"
       fill="none"
       stroke="currentColor"
       viewBox="0 0 24 24"
@@ -54,11 +57,10 @@ const StatsBubble: React.FC<{
 }> = ({ onClick, isActive }) => (
   <button
     onClick={onClick}
-    className={`bubble-button ${isActive ? 'solexys-rotate-45' : ''}`}
-    style={{ width: '2.5rem', height: '2.5rem' }}
+    className={`solexys-w-10 solexys-h-10 solexys-rounded-full solexys-bg-[#E32D13] solexys-text-white solexys-flex solexys-items-center solexys-justify-center solexys-shadow-md solexys-cursor-pointer solexys-transition-transform solexys-duration-300 hover:solexys-scale-110 hover:solexys-shadow-lg ${isActive ? 'solexys-rotate-45' : ''}`}
   >
     <svg
-      style={{width: '20px'}}
+      className="solexys-w-5 solexys-h-5"
       fill="none"
       stroke="currentColor"
       viewBox="0 0 24 24"
@@ -101,7 +103,7 @@ const InteractiveBubbles: React.FC = () => {
   };
 
   return (
-    <div className="solexys-fixed !solexys-left-[10px] solexys-bottom-[20px] solexys-z-50" style={{ left: '10px' }}>
+    <div className="solexys-fixed !solexys-left-[10px] solexys-bottom-[20px] solexys-z-50">
       <div className="solexys-flex solexys-flex-col-reverse solexys-items-center solexys-gap-3">
         <MainBubble onClick={toggleChat} isActive={isChatOpen} />
         <StatsBubble onClick={toggleStats} isActive={isStatsOpen} />

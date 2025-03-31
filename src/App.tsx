@@ -1,17 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import InteractiveBubbles from './components/InteractiveBubbles';
 import ReactDOM from 'react-dom/client';
-
-// Create a separate React component for the banner using Tailwind CSS
-const HolderDistributionBanner: React.FC = () => {
-  return (
-    <div className="solexys-w-full solexys-h-[60px] solexys-bg-red-600 solexys-z-[9999] solexys-relative solexys-flex solexys-items-center solexys-justify-center solexys-transition-opacity solexys-duration-300 solexys-ease-in-out">
-      <p className="solexys-m-0 solexys-text-white solexys-font-bold">
-        Detected HolderDistribution or Coin Page
-      </p>
-    </div>
-  );
-};
+import TokenStatsBanner from './components/TokenStatsBanner';
 
 function App() {
   const [isEligibleSite, setIsEligibleSite] = useState(false);
@@ -70,7 +60,7 @@ function App() {
         
         // Render the banner component
         bannerRoot = ReactDOM.createRoot(bannerContainer);
-        bannerRoot.render(<HolderDistributionBanner />);
+        bannerRoot.render(<TokenStatsBanner />);
         
         // Fade in the banner
         setTimeout(() => {
@@ -155,7 +145,7 @@ function App() {
   }
   
   return (
-    <div className="solexys-ai-extension" data-extension-root="true">
+    <div className="solexys-pointer-events-auto" data-extension-root="true">
       <InteractiveBubbles />
     </div>
   );

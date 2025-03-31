@@ -8,7 +8,11 @@ const Message: React.FC<{
 }> = ({ content, isUser }) => (
   <div className={`solexys-flex ${isUser ? 'solexys-justify-end' : 'solexys-justify-start'} solexys-mb-3`}>
     <div 
-      className={isUser ? 'user-message solexys-px-4 solexys-py-3 solexys-max-w-[80%]' : 'assistant-message solexys-px-4 solexys-py-3 solexys-max-w-[80%]'}
+      className={
+        isUser 
+          ? 'solexys-bg-[#E32D13] solexys-text-white solexys-px-4 solexys-py-3 solexys-max-w-[80%] solexys-rounded-t-2xl solexys-rounded-bl-2xl solexys-rounded-br-sm' 
+          : 'solexys-bg-[#292a3a] solexys-text-[#e9e9f2] solexys-px-4 solexys-py-3 solexys-max-w-[80%] solexys-rounded-t-2xl solexys-rounded-br-2xl solexys-rounded-bl-sm'
+      }
     >
       {content}
     </div>
@@ -37,12 +41,12 @@ const ChatInput: React.FC<{
         value={input}
         onChange={(e) => setInput(e.target.value)}
         placeholder="Type your message..."
-        className="input-field solexys-flex-1 solexys-p-3 solexys-focus:outline-none"
+        className="solexys-flex-1 solexys-p-3 solexys-focus:outline-none solexys-bg-[#292a3a] solexys-text-[#e9e9f2] solexys-border solexys-border-[#3f3f5c] solexys-rounded-l-2xl placeholder:solexys-text-[#a7a7c5]"
         disabled={isLoading}
       />
       <button 
         type="submit" 
-        className="send-button solexys-px-4 solexys-py-3 solexys-flex solexys-items-center solexys-justify-center"
+        className="solexys-px-4 solexys-py-3 solexys-flex solexys-items-center solexys-justify-center solexys-bg-[#E32D13] solexys-text-white solexys-rounded-r-2xl solexys-transition-colors solexys-duration-200 hover:solexys-bg-[#C02510]"
         disabled={isLoading}
       >
         {isLoading ? (
@@ -92,7 +96,8 @@ const ChatBubble: React.FC<{
   if (!isOpen) return null;
   
   return (
-    <div className="chat-bubble solexys-absolute"
+    <div 
+      className="solexys-absolute solexys-bg-[#1e1e2e] solexys-border solexys-border-[#3f3f5c] solexys-rounded-2xl solexys-overflow-hidden solexys-shadow-xl"
       style={{
         left: '4rem',
         bottom: '0',
@@ -102,19 +107,19 @@ const ChatBubble: React.FC<{
       }}
     >
       {/* Chat header with anime girl */}
-      <div className="chat-header">
+      <div className="solexys-relative solexys-border-b solexys-border-[#3f3f5c] solexys-h-[120px] solexys-overflow-hidden">
         <img 
           src={chrome.runtime.getURL('transparent_header.png')} 
           alt="Anime Girl" 
-          className="header-image"
+          className="solexys-w-full solexys-h-full solexys-object-cover solexys-object-center"
         />
-        <div className="chat-title solexys-flex solexys-justify-between solexys-items-center">
+        <div className="solexys-absolute solexys-bottom-0 solexys-left-0 solexys-w-full solexys-py-3 solexys-px-4 solexys-bg-gradient-to-t solexys-from-[#1e1e2ee6] solexys-to-transparent solexys-text-[#e9e9f2] solexys-font-semibold solexys-flex solexys-justify-between solexys-items-center">
           <h3 className="solexys-font-semibold">Solexys AI Assistant</h3>
           <button 
             onClick={onClose} 
-            className="solexys-text-white solexys-hover:text-gray-200 solexys-focus:outline-none"
+            className="solexys-text-white hover:solexys-text-gray-200 focus:solexys-outline-none"
           >
-            <svg style={{width: '20px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="solexys-w-5 solexys-h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
@@ -122,7 +127,7 @@ const ChatBubble: React.FC<{
       </div>
       
       {/* Chat messages */}
-      <div className="chat-body solexys-p-4">
+      <div className="solexys-bg-[#1e1e2e] solexys-text-[#e9e9f2] solexys-h-[300px] solexys-overflow-y-auto solexys-p-4">
         {messages.length === 0 ? (
           <div className="solexys-text-center solexys-text-gray-400 solexys-mt-24">
             Ask Solexys AI anything about this platform!
@@ -147,7 +152,7 @@ const ChatBubble: React.FC<{
       </div>
       
       {/* Chat input */}
-      <div className="chat-footer solexys-p-3">
+      <div className="solexys-bg-[#292a3a] solexys-border-t solexys-border-[#3f3f5c] solexys-p-3">
         <ChatInput onSendMessage={sendMessage} isLoading={isLoading} />
       </div>
     </div>

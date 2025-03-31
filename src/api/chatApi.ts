@@ -1,6 +1,7 @@
 import axios from 'axios';
+import { API_BASE_URL } from '../config';
 
-const API_URL = 'https://app.solexys.ai/api/chat';
+const API_URL = `${API_BASE_URL}/api/chat`;
 
 // Types for the API responses
 export interface ChatMessage {
