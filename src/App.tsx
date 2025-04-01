@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react';
 import InteractiveBubbles from './components/InteractiveBubbles';
 import ReactDOM from 'react-dom/client';
 import TokenStatsBanner from './components/TokenStatsBanner';
+import { QueryClient } from '@tanstack/react-query';
+
+// Create a dedicated QueryClient instance for dynamically injected components like TokenStatsBanner
+const dynamicComponentsQueryClient = new QueryClient();
 
 function App() {
   const [isEligibleSite, setIsEligibleSite] = useState(false);
@@ -58,7 +62,7 @@ function App() {
         // Insert the banner container before the holder distribution element
         holderDistributionElement.parentNode?.insertBefore(bannerContainer, holderDistributionElement);
         
-        // Render the banner component
+        // Render the banner component (with its own QueryClientProvider)
         bannerRoot = ReactDOM.createRoot(bannerContainer);
         bannerRoot.render(<TokenStatsBanner />);
         

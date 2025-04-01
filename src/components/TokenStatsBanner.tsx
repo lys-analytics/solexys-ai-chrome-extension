@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { TokenStatsCard } from './TokenStats/TokenStats';
 import { TokenDetails } from '../types/token-details';
 import tokenApi from '../api/tokenApi';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-const TokenStatsBanner: React.FC = () => {
+// The main TokenStatsBanner component without the QueryClientProvider
+const TokenStatsBannerContent: React.FC = () => {
   const [token, setToken] = useState<TokenDetails | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -71,6 +73,26 @@ const TokenStatsBanner: React.FC = () => {
       </div>
       <TokenStatsCard token={token} />
     </div>
+  );
+};
+
+// Wrapper component that includes the QueryClientProvider
+const TokenStatsBanner: React.FC = () => {
+  // Create a new QueryClient for each instance of the component
+  // This ensures isolated React Query context for each dynamically rendered instance
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        refetchOnWindowFocus: false,
+        retry: 1,
+      },
+    },
+  });
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TokenStatsBannerContent />
+    </QueryClientProvider>
   );
 };
 
